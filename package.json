@@ -1,0 +1,22 @@
+{
+  "name": "plum",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "bin": "bin/index.js",
+  "scripts": {
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "zhatn98@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
+    "prettier": "3.4.2"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "packageManager": "npm@20.12.2"
+}
