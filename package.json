@@ -5,7 +5,7 @@
   "type": "module",
   "bin": "bin/index.js",
   "scripts": {
-    "prepare": "husky"
+    "prepare": "npx husky"
   },
   "keywords": [],
   "author": "zhatn98@gmail.com",
@@ -18,5 +18,11 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
-  "packageManager": "npm@20.12.2"
+  "packageManager": "npm@20.12.2",
+  "dependencies": {
+    "@inquirer/prompts": "^7.2.1",
+    "chalk": "5.4.1",
+    "fs-extra": "^11.2.0",
+    "semver": "^7.6.3"
+  }
 }
