@@ -29,13 +29,16 @@ export const generateTag = async () => {
       if (error) {
         log(
           chalk.red(
-            `🚫 【${roadmapDesc[step + 1]}】 过程出现异常，已终止后续操作`
+            `🚫【${roadmapDesc[step + 1]}】 过程出现异常，已终止后续操作`
           )
         )
         log(chalk.red(`🚫【错误信息】${error.message}`))
         process.exit(0)
       }
       // ignore
+    },
+    timeout: {
+      block: 10000,
     },
   })
   const diff = await sGit.diff(['--name-only', process.cwd()])
