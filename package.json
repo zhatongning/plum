@@ -7,13 +7,20 @@
   "scripts": {
     "prepare": "npx husky"
   },
-  "keywords": [],
+  "keywords": [
+    "git",
+    "cli"
+  ],
   "author": "zhatn98@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^15.2.11",
     "prettier": "3.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhatongning/plum"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
