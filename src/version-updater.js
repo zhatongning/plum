@@ -8,29 +8,24 @@ import {
   doStandardVersionPrompt,
 } from './utils/version.js'
 import { findPkg } from './utils/file.js'
+import { log } from './utils/log.js'
 
 export const bumpVersion = async () => {
   const result = await findPkg(process.cwd())
   if (!result) {
-    console.log(
-      chalk.bgCyan('[Plum]'),
-      chalk.gray('\u{1F198} 当前不在一个 npm 项目目录下')
-    )
+    log(chalk.gray('🆘 当前不在一个 npm 项目目录下'))
     return
   }
   let pkg
   try {
     pkg = await fse.readJson(result)
   } catch (error) {
-    console.log(
-      chalk.bgCyan('[Plum]'),
-      chalk.red('\u{1F6AB} 读取 package.json 失败')
-    )
+    log(chalk.red('🚫 读取 package.json 失败'))
     return
   }
   const version = pkg.version
   if (!semver.valid(version, false)) {
-    console.log(chalk.bgCyan('[Plum]'), chalk.red('\u{1F6AB} 版本号不合法'))
+    log(chalk.red('🚫 版本号不合法'))
     return
   }
 
@@ -50,15 +45,8 @@ export const bumpVersion = async () => {
   }
   try {
     await fse.writeJson(result, { ...pkg, version: newVersion }, { spaces: 2 })
-    console.log(
-      chalk.bgCyan('[Plum]'),
-      chalk.green(`\u{1F4A5} 版本号已升级为 ${newVersion}`)
-    )
+    log(chalk.green(`💥 版本号已升级为 ${newVersion}`))
   } catch (error) {
-    console.log(
-      chalk.bgCyan('[Plum]'),
-      chalk.red('\u{1F6AB} 写入 package.json 失败')
-    )
-    return
+    log(chalk.red('🚫 写入 package.json 失败'))
   }
 }
