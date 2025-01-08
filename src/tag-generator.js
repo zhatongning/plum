@@ -51,7 +51,7 @@ export const generateTag = async () => {
       // 1. 保存文件，并提交一条commit，默认的commit message 为 bump version@[version in package.json]
       const version = packageJson.version
       await sGit.add('.')
-      await sGit.commit(`bump version@${version}`)
+      await sGit.commit(`chore: bump version@${version}`)
       step++
       log('🚀 commit已创建')
       // 2. 将所在分支提交到远端
